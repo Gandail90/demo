@@ -1,0 +1,77 @@
+type Query {
+    getEpisodeById(episodeId: ID): Episode
+    getAllEpisodes: [Episode]
+
+    getUserById(userId: ID): User
+    getAllUser: [User]
+
+    getCommentById(commentId: ID): Comment
+    getAllComments: [Comment]
+}
+
+type Mutation {
+    createUser(request: CreateUserRequest): User
+    renameUser(userId: ID, newName: String): User
+    deleteUser(userId: ID): Boolean
+
+    createComment(dto: CreateCommentRequest): Comment
+    likeComment(commentId: ID, userId:ID): Boolean
+    deleteComment(commentId: ID): Boolean
+
+    createEpisode(request: CreateEpisodeRequest): Episode
+    deleteEpisode(episodeId: ID): Boolean
+}
+
+type Subscription {
+    subscribeToEpisodes: Episode
+}
+
+type Episode {
+    episodeId: ID
+    name: String
+    link: String
+    themes: [Theme]
+}
+
+type Theme {
+    themeId: ID
+    text: String
+    timestamp: String
+    episodeId: String
+    tagIds: [String]
+    comments: Comment
+}
+
+type Comment {
+    commentId: String
+    text: String
+    timestamp: String
+    creator: User
+    themeId: String
+    likes : [User]
+}
+
+type User {
+    userId: String
+    name: String
+    password: String
+    themesIds: [String]
+    commentsIds: [String]
+}
+
+input CreateCommentRequest {
+    comment: String
+    userId: ID
+    themeId: ID
+}
+
+input CreateUserRequest {
+    name: String
+    password: String
+}
+
+input CreateEpisodeRequest
+{
+    name: String
+    link: String
+}
