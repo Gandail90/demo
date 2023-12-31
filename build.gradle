@@ -1,8 +1,26 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
-	id 'org.springframework.boot' version '2.7.5'
+	id 'org.springframework.boot' version '3.2.1'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'org.asciidoctor.convert' version '1.5.8'
 	id 'java'
+}
+
+tasks.register('buildWithNeo4j', BootJar.class) {
+
+	dependsOn 'clean', 'build'
+	project.ext.set('springProfiles', 'Neo4j')
+	mainClass.set("de.sni.demo.DemoApplication")
+	setTargetJavaVersion(JavaVersion.VERSION_17)
+}
+
+tasks.register('buildWithMongoDB', BootJar.class) {
+
+	dependsOn 'clean', 'build'
+	project.ext.set('springProfiles', 'MongoDB')
+	mainClass.set("de.sni.demo.DemoApplication")
+	setTargetJavaVersion(JavaVersion.VERSION_17)
 }
 
 group = 'de.sni'
@@ -25,7 +43,10 @@ ext {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
+	implementation(project(':businesslogic'))
+	implementation(project(':api'))
+	implementation(project(':database-neo4j'))
+	implementation(project(':database-mongodb'))
 	implementation 'org.springframework.boot:spring-boot-starter-graphql'
 	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
@@ -33,7 +54,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-	implementation 'org.neo4j:neo4j-ogm-bolt-driver:3.2.38'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'

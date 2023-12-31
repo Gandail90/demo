@@ -1,1 +1,5 @@
 rootProject.name = 'demo'
+include 'api'
+include 'businesslogic'
+include 'database-mongodb'
+include 'database-neo4j'
