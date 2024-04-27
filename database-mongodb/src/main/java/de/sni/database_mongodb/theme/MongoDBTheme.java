@@ -8,8 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.AbstractAggregateRoot;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.List;
 import java.util.UUID;
@@ -27,13 +27,13 @@ public class MongoDBTheme extends AbstractAggregateRoot<MongoDBTheme> implements
     @Setter
     private String timestamp;
 
-    @DBRef
+    @DocumentReference
     private Episode episode;
 
-    @DBRef
+    @DocumentReference
     private List<Tag> tag;
 
-    @DBRef
+    @DocumentReference
     private List<Comment> comments;
 
     @Override

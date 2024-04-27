@@ -4,14 +4,13 @@ import de.sni.demo.businesslogic.comment.Comment;
 import de.sni.demo.businesslogic.comment.event.CommentCreatedEvent;
 import de.sni.demo.businesslogic.theme.Theme;
 import de.sni.demo.businesslogic.user.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.AbstractAggregateRoot;
 import org.springframework.data.domain.DomainEvents;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -30,13 +29,13 @@ public class MongoDBComment extends AbstractAggregateRoot<MongoDBComment> implem
     @Setter
     private LocalDateTime timestamp;
 
-    @DBRef
+    @DocumentReference
     private User creator;
 
-    @DBRef
+    @DocumentReference
     private Theme theme;
 
-    @DBRef
+    @DocumentReference
     private List<User> likedUser;
 
     public void addLike(final User user)

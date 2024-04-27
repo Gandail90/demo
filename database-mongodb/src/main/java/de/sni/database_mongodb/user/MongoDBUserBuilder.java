@@ -5,14 +5,17 @@ import de.sni.demo.businesslogic.theme.ThemeService;
 import de.sni.demo.businesslogic.user.User;
 import de.sni.demo.businesslogic.user.UserBuilder;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Primary
 @Component
+@Profile("MongoDB")
 @RequiredArgsConstructor
 public class MongoDBUserBuilder implements UserBuilder
 {
@@ -27,7 +30,7 @@ public class MongoDBUserBuilder implements UserBuilder
             final List<String> commentsIds)
     {
         return new MongoDBUser(
-                userId != null ? UUID.fromString(userId) : null,
+                userId,
                 name,
                 password,
                 themesIds.stream()

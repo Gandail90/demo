@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Primary
@@ -34,7 +33,7 @@ public class MongoDBUserRepository implements UserRepository
             return;
         }
 
-        repository.deleteById(UUID.fromString(userId));
+        repository.deleteById(userId);
     }
 
     @Override
@@ -45,7 +44,7 @@ public class MongoDBUserRepository implements UserRepository
             return Optional.empty();
         }
 
-        return repository.findById(UUID.fromString(userId))
+        return repository.findById(userId)
                 .map(User.class::cast);
     }
 

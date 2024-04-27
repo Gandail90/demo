@@ -45,8 +45,8 @@ ext {
 dependencies {
 	implementation(project(':businesslogic'))
 	implementation(project(':api'))
-	implementation(project(':database-neo4j'))
 	implementation(project(':database-mongodb'))
+	implementation(project(':database-neo4j'))
 	implementation 'org.springframework.boot:spring-boot-starter-graphql'
 	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'

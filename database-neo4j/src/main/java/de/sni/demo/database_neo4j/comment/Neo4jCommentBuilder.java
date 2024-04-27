@@ -4,12 +4,16 @@ import de.sni.demo.businesslogic.comment.Comment;
 import de.sni.demo.businesslogic.comment.CommentBuilder;
 import de.sni.demo.businesslogic.theme.Theme;
 import de.sni.demo.businesslogic.user.User;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Primary
 @Component
+@Profile("Neo4j")
 public class Neo4jCommentBuilder implements CommentBuilder
 {
     @Override

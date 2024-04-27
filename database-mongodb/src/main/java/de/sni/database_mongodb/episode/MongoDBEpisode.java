@@ -5,8 +5,8 @@ import de.sni.demo.businesslogic.theme.Theme;
 import lombok.AllArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.AbstractAggregateRoot;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class MongoDBEpisode extends AbstractAggregateRoot<MongoDBEpisode> implem
 
     private URL link;
 
-    @DBRef
+    @DocumentReference
     private List<Theme> themes;
 
     public void rename(final String newName)

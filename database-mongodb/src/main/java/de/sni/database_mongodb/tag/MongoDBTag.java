@@ -5,8 +5,8 @@ import de.sni.demo.businesslogic.theme.Theme;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class MongoDBTag implements Tag
     @Setter
     private String name;
 
-    @DBRef
+    @DocumentReference
     private List<Theme> themes;
 
     @Override
