@@ -5,6 +5,8 @@ import de.sni.demo.businesslogic.user.UserBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component
 @RequiredArgsConstructor
 public class UserDTOConverter
@@ -18,7 +20,7 @@ public class UserDTOConverter
                         null,
                         request.getName(),
                         request.getPassword(),
-                        null,
-                        null);
+                        new ArrayList<>(),
+                        new ArrayList<>());
     }
 }

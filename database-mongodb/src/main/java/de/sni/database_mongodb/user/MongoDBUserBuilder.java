@@ -21,6 +21,7 @@ public class MongoDBUserBuilder implements UserBuilder
 {
     private final ThemeService themeService;
     private final CommentService commentService;
+
     @Override
     public User build(
             final String userId,

@@ -8,5 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("de.sni.demo.businesslogic")
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
-public class ApiConfig {
+public class ApiConfig
+{
+
 }

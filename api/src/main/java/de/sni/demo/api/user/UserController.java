@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller(value = "user")
@@ -24,23 +23,21 @@ public class UserController
     public ResponseEntity<User> getById(
             @PathVariable(name = "userId") final String userId)
     {
-        return ResponseEntity.of(userService.getById(userId));
+        return ResponseEntity.of(
+                userService.getById(userId));
     }
 
     @GetMapping(path = "all")
     public ResponseEntity<List<User>> getAll()
     {
-        log.info("########################### getAllUser");
         return ResponseEntity.ok(userService.getAll());
     }
 
     @PostMapping
     public ResponseEntity<User> create(@RequestBody final CreateUserRequest request)
     {
-        return ResponseEntity.of(
-                Optional.of(
-                        userService.save(
-                                converter.convert(request))));
+        return ResponseEntity.ofNullable(
+                userService.save(converter.convert(request)));
     }
 
     @DeleteMapping(path = "{userId}")

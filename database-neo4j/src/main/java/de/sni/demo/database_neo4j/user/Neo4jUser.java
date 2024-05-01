@@ -1,5 +1,7 @@
 package de.sni.demo.database_neo4j.user;
 
+import de.sni.demo.businesslogic.comment.Comment;
+import de.sni.demo.businesslogic.theme.Theme;
 import de.sni.demo.businesslogic.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,4 +31,22 @@ public class Neo4jUser implements User
     private List<String> themesIds;
 
     private List<String> commentsIds;
+
+    @Override
+    public String getId()
+    {
+        return userId;
+    }
+
+    @Override
+    public List<Theme> getThemes()
+    {
+        return null;
+    }
+
+    @Override
+    public List<Comment> getComments()
+    {
+        return null;
+    }
 }

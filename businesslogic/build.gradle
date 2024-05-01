@@ -6,6 +6,7 @@ plugins {
 
 group 'de.sni'
 version '0.0.1-SNAPSHOT'
+bootJar.enabled = false
 
 repositories {
     mavenCentral()
