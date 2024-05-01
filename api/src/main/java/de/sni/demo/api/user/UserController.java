@@ -4,6 +4,8 @@ import de.sni.demo.businesslogic.user.User;
 import de.sni.demo.businesslogic.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -33,11 +35,17 @@ public class UserController
         return ResponseEntity.ok(userService.getAll());
     }
 
-    @PostMapping
+    @PostMapping(
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> create(@RequestBody final CreateUserRequest request)
     {
-        return ResponseEntity.ofNullable(
-                userService.save(converter.convert(request)));
+        final User created =
+                userService.save(converter.convert(request));
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(created);
     }
 
     @DeleteMapping(path = "{userId}")

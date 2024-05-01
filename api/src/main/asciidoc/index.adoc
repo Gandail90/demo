@@ -1,6 +1,6 @@
 = Demo API
 
-v{version}, Steffen Nitschke {date}
+v0.1, Steffen Nitschke 01.05.24
 
 :doctype: book
 :icons: font
@@ -11,40 +11,24 @@ v{version}, Steffen Nitschke {date}
 :sectlinks:
 :sectnums:
 
-== Subtitle
+// == Subtitle
+//
+// === SubSubtitle
+//
+// Die API unterstützt die folgenden Operationen für Aufgaben:
+//
+// |===
+// | Methode | Pfad           | Beschreibung
+// | GET     | /tasks         | Alle Aufgaben abrufen
+// | GET     | /tasks/{id}    | Eine bestimmte Aufgabe abrufen
+// | POST    | /tasks         | Eine neue Aufgabe erstellen
+// | PUT     | /tasks/{id}    | Eine vorhandene Aufgabe aktualisieren
+// | DELETE  | /tasks/{id}    | Eine Aufgabe löschen
+// |===
 
-=== SubSubtitle
-
-Die API unterstützt die folgenden Operationen für Aufgaben:
-
-|===
-| Methode | Pfad           | Beschreibung
-| GET     | /tasks         | Alle Aufgaben abrufen
-| GET     | /tasks/{id}    | Eine bestimmte Aufgabe abrufen
-| POST    | /tasks         | Eine neue Aufgabe erstellen
-| PUT     | /tasks/{id}    | Eine vorhandene Aufgabe aktualisieren
-| DELETE  | /tasks/{id}    | Eine Aufgabe löschen
-|===
-
-== Beispiel-Anfragen und Antworten
-====
 
 == Benutzer
-
-include::{snippets}/given_stored-user_when_get-all_should_return-stored-user/http-request.adoc[]
-include::{snippets}/given_stored-user_when_get-all_should_return-stored-user/http-response.adoc[]
-include::{snippets}/given_stored-user_when_get-all_should_return-stored-user/request-body.adoc[]
-include::{snippets}/given_stored-user_when_get-all_should_return-stored-user/response-body.adoc[]
-
-...
-
-== Schnittstellen-Dokumentation
-
-In diesem Abschnitt sind die einzelnen Endpunkte der API im Detail dokumentiert.
-
-include::{snippets}/tasks/get-tasks/http-request.adoc[]
-include::{snippets}/tasks/get-tasks/http-response.adoc[]
-include::{snippets}/tasks/post-tasks/http-request.adoc[]
-include::{snippets}/tasks/post-tasks/http-response.adoc[]
-// Weitere Endpunkte hier...
+include::UserController_getAll.adoc[]
+include::UserController_getById.adoc[]
+include::UserController_created.adoc[]
 

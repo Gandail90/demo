@@ -1,0 +1,12 @@
+:class-name:
+:method-name:
+
+// == {class-name}
+=== {method-name}
+====
+Request:
+include::{snippets}/{class-name}/{method-name}/http-request.adoc[]
+Response:
+include::{snippets}/{class-name}/{method-name}/http-response.adoc[]
+
+====
